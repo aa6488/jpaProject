@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,5 +20,15 @@
         <button type="submit">로그인</button>
     </div>
 </form>
+    <button id="registerBtn" type="button" onclick="registerPage()">회원가입</button>
 </body>
 </html>
+
+<script>
+
+    function registerPage() {
+        window.location.href = "/register";
+    }
+
+
+</script>
