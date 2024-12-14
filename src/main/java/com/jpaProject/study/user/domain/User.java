@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.sql.Date;
+import java.time.LocalDateTime;
 
 @Data
 @Entity
@@ -24,13 +25,13 @@ public class User {
     private String userPwd;
 
     @Column(name = "user_create_date")
-    private Date userCreateDate;
+    private LocalDateTime userCreateDate;
 
     @Column(name = "user_delete_date")
-    private Date userDeleteDate;
+    private LocalDateTime userDeleteDate;
 
     @Column(name = "user_login_date")
-    private Date userLoginDate;
+    private LocalDateTime userLoginDate;
 
 
 }

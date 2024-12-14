@@ -4,6 +4,7 @@ import jakarta.persistence.Column;
 import lombok.Data;
 
 import java.sql.Date;
+import java.time.LocalDateTime;
 
 @Data
 public class UserDTO {
@@ -12,7 +13,7 @@ public class UserDTO {
     private String userName;
     private String userId;
     private String userPwd;
-    private Date userCreateDate;
-    private Date userDeleteDate;
-    private Date userLoginDate;
+    private LocalDateTime userCreateDate;
+    private LocalDateTime userDeleteDate;
+    private LocalDateTime userLoginDate;
 }
