@@ -7,6 +7,7 @@ import jakarta.persistence.Id;
 import lombok.Data;
 
 import java.sql.Date;
+import java.time.LocalDateTime;
 
 @Data
 public class BoardDTO {
@@ -15,7 +16,7 @@ public class BoardDTO {
     private String userNo;
     private String userName;
     private String boardDetail;
-    private Date boardCreateDate;
-    private Date boardDeleteDate;
-    private Date boardLoginDate;
+    private LocalDateTime boardCreateDate;
+    private LocalDateTime boardDeleteDate;
+    private LocalDateTime boardLoginDate;
 }
