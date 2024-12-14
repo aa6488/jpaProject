@@ -33,8 +33,16 @@ public class CustomUserDetailsService implements UserDetailsService {
 
         User user = userService.findByUserId(username);
 
+        if (user == null) {
+            throw new UsernameNotFoundException("계정정보가 없습니다.");
+        }
+        System.out.println("로그인중입니다 꺼내온 정보는 :" + user.toString());
 
 
-        return null;
+        return org.springframework.security.core.userdetails.User.builder()
+                .username(user.getUserId())
+                .password(user.getUserPwd())
+                .roles("USER")
+               .build();
     }
 }

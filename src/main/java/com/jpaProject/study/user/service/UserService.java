@@ -4,6 +4,8 @@ import com.jpaProject.study.user.domain.User;
 import com.jpaProject.study.user.dto.UserDTO;
 import com.jpaProject.study.user.repository.UserRepository;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,8 @@ public class UserService {
     private final ModelMapper modelMapper;
     private final PasswordEncoder passwordEncoder;
 
+    private final Authentication authentication;
+
 
     private LocalDateTime localDateTime;
 
@@ -23,6 +27,7 @@ public class UserService {
                        ModelMapper modelMapper,
                        PasswordEncoder passwordEncoder) {
 
+        this.authentication = SecurityContextHolder.getContext().getAuthentication();
         this.userRepository = userRepository;
         this.modelMapper = modelMapper;
         this.passwordEncoder = passwordEncoder;
