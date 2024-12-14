@@ -1,7 +1,9 @@
 package com.jpaProject.study.user.controller;
 
+import com.jpaProject.study.user.domain.User;
 import com.jpaProject.study.user.dto.UserDTO;
 import com.jpaProject.study.user.service.UserService;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +22,10 @@ public class UserController {
 
 
     @GetMapping("/")
-    public String homePage() {
+    public String homePage(@AuthenticationPrincipal org.springframework.security.core.userdetails.User user) {
+
+        System.out.println("로그인 성공 유저 정보는 : "+ user.toString());
+
         return "board";
     }
 

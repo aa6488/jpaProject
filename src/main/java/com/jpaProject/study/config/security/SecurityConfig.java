@@ -18,6 +18,7 @@ public class SecurityConfig{
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
 //                .csrf().disable()
+//                .csrf().disable()
 //                .csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
 //                http
                 .authorizeHttpRequests(auth -> auth
