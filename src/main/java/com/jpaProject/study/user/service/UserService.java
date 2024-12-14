@@ -40,6 +40,11 @@ public class UserService {
         return convertDto(saveUser);
     }
 
+    public User findByUserId(String userId) {
+        return userRepository.findByUserId(userId)
+                .orElseThrow(() -> new IllegalArgumentException("User not found"));
+    }
+
 
     // Entity , DTO 간 converter
     private User convertEntity(UserDTO userDTO) {
