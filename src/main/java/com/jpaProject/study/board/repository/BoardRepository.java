@@ -1,4 +1,14 @@
 package com.jpaProject.study.board.repository;
 
-public class BoardRepository {
+import com.jpaProject.study.board.domain.Board;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface BoardRepository extends JpaRepository<Board, Long> {
+
+
+
+
+
+
+
 }

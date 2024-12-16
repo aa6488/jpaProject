@@ -15,6 +15,7 @@ public class BoardDTO {
     private Long boardNo;
     private String userNo;
     private String userName;
+    private String boardTitle;
     private String boardDetail;
     private LocalDateTime boardCreateDate;
     private LocalDateTime boardDeleteDate;
