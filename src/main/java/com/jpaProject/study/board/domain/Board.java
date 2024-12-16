@@ -21,8 +21,12 @@ public class Board {
     @Column(name = "user_name")
     private String userName;
 
+    @Column(name = "board_title")
+    private String boardTitle;
+
     @Column(name = "board_detail")
     private String boardDetail;
+
 
     @Column(name = "board_create_date")
     private LocalDateTime boardCreateDate;

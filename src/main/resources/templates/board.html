@@ -10,14 +10,14 @@
 
 <!-- 게시글 추가 폼 -->
 <h3>새 게시글 작성</h3>
-<form action="/board" method="post">
+<form th:action="@{/board}" method="post">
     <div>
         <label for="title">제목:</label>
-        <input type="text" id="title" name="title" required>
+        <input type="text" id="title" name="boardTitle" required>
     </div>
     <div>
         <label for="content">내용:</label>
-        <textarea id="content" name="content" required></textarea>
+        <textarea id="content" name="boardDetail" required></textarea>
     </div>
     <div>
         <button type="submit">게시글 작성</button>
@@ -30,16 +30,18 @@
     <thead>
     <tr>
         <th>번호</th>
+        <th>작성자</th>
         <th>제목</th>
         <th>작성일</th>
     </tr>
     </thead>
     <tbody>
     <!-- 게시글 목록을 반복문으로 출력 (Thymeleaf 사용) -->
-    <tr th:each="post : ${posts}">
-        <td th:text="${post.id}">1</td>
-        <td th:text="${post.title}">게시글 제목</td>
-        <td th:text="${post.createdDate}">2024-12-13</td>
+    <tr th:each="board : ${boardList}">
+        <td th:text="${board.boardNo}">1</td>
+        <td th:text="${board.userName}">1</td>
+        <td th:text="${board.boardDetail}">게시글 제목</td>
+        <td th:text="${board.boardCreatedDate}">2024-12-13</td>
     </tr>
     </tbody>
 </table>
