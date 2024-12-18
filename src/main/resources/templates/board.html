@@ -32,7 +32,9 @@
         <th>번호</th>
         <th>작성자</th>
         <th>제목</th>
+        <th>내용</th>
         <th>작성일</th>
+        <th>삭제</th>
     </tr>
     </thead>
     <tbody>
@@ -40,10 +42,43 @@
     <tr th:each="board : ${boardList}">
         <td th:text="${board.boardNo}">1</td>
         <td th:text="${board.userName}">1</td>
-        <td th:text="${board.boardDetail}">게시글 제목</td>
-        <td th:text="${board.boardCreatedDate}">2024-12-13</td>
+        <td><a th:href="@{/board/detail/{boardNo}(boardNo=${board.boardNo})}" th:text="${board.boardTitle}"></a></td>
+<!--        <td th:text="${board.boardTitle}">게시글 제목</td>-->
+        <td th:text="${board.boardDetail}">게시글 내용</td>
+        <td th:text="${#temporals.format(board.boardCreateDate, 'yyyy-MM-dd HH:mm:ss')}">2024-12-13</td>
+        <td><button id="deleteBtn" type="button" th:onclick="'boardDelete('+ ${board.boardNo} +')'">버튼</button></td>
     </tr>
     </tbody>
 </table>
 </body>
 </html>
+
+<script>
+
+    function boardDelete(boardNo) {
+        console.log(boardNo);
+        const csrfToken = '[[${_csrf.token}]]';
+
+        fetch(`/board/delete/${boardNo}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Csrf-Token': csrfToken
+            }
+        })
+            .then(response => {
+                console.log(response);
+                if (response.ok) {
+                    alert('게시물 삭제완료');
+                    location.reload();
+                } else {
+                    alert('게시물 삭제실패');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+
+
+
+    }
+
+</script>

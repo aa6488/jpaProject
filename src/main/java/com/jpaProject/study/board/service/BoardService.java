@@ -11,6 +11,8 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class BoardService {
@@ -42,5 +44,30 @@ public class BoardService {
         return modelMapper.map(save, BoardDTO.class);
 
 
+    }
+
+    public List<BoardDTO> getBoardAll() {
+
+        List<Board> boardList = boardRepository.findAll();
+
+        List<BoardDTO> boardDTOList = new ArrayList<BoardDTO>();
+
+        for (Board board : boardList) {
+            boardDTOList.add(modelMapper.map(board, BoardDTO.class));
+        }
+
+
+        return boardDTOList;
+    }
+
+    public void deleteBoard(Long boardNo) {
+        boardRepository.deleteById(boardNo);
+    }
+
+    public BoardDTO getBoardOne(Long boardNo) {
+        Board board = boardRepository.findById(boardNo)
+                .orElseThrow(() -> new IllegalStateException("해당데이터는 없는값입니다."));
+
+        return modelMapper.map(board, BoardDTO.class);
     }
 }

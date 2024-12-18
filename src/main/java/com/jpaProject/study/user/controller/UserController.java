@@ -21,14 +21,6 @@ public class UserController {
     }
 
 
-    @GetMapping("/")
-    public String homePage(@AuthenticationPrincipal org.springframework.security.core.userdetails.User user) {
-
-        System.out.println("로그인 성공 유저 정보는 : "+ user.toString());
-
-        return "board";
-    }
-
     @GetMapping("/login")
     public String loginPage() {
         return "login";
