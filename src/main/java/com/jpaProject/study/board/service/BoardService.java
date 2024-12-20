@@ -18,8 +18,8 @@ import java.util.List;
 public class BoardService {
 
     private final BoardRepository boardRepository;
-    private Authentication authentication = null;
     private final ModelMapper modelMapper;
+    private Authentication authentication = null;
 
 
 
