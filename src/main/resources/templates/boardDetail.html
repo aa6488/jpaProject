@@ -36,10 +36,7 @@
 <!-- 댓글 추가 폼 -->
 <h3>댓글 작성</h3>
 <form th:action="@{/comment}" method="post">
-    <div>
-        <label for="title">제목:</label>
-        <input type="text" id="title" name="commentTitle" required>
-    </div>
+    <input type="hidden" name="boardNo" th:value="${board.boardNo}"/>
     <div>
         <label for="content">내용:</label>
         <input type="text" id="content" name="commentDetail" required>
@@ -48,6 +45,31 @@
         <button type="submit">댓글 작성</button>
     </div>
 </form>
+
+<!-- 게시글 목록 -->
+<h3>게시글 목록</h3>
+<table>
+    <thead>
+    <tr>
+        <th>번호</th>
+        <th>작성자</th>
+        <th>내용</th>
+        <th>작성일</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- 게시글 목록을 반복문으로 출력 (Thymeleaf 사용) -->
+    <tr th:each="comment : ${board.comments}">
+        <td th:text="${comment.commentNo}">1</td>
+        <td th:text="${comment.userName}">1</td>
+        <td th:text="${comment.commentDetail}">게시글 내용</td>
+        <td th:text="${#temporals.format(comment.commentCreateDate, 'yyyy-MM-dd HH:mm:ss')}">2024-12-13</td>
+    </tr>
+    </tbody>
+</table>
+
+
+
 </body>
 </html>
 

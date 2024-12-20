@@ -1,10 +1,12 @@
 package com.jpaProject.study.board.domain;
 
+import com.jpaProject.study.comment.domain.Comment;
 import jakarta.persistence.*;
 import lombok.Data;
 
 import java.sql.Date;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @Entity
@@ -36,4 +38,9 @@ public class Board {
 
     @Column(name = "board_login_date")
     private LocalDateTime boardLoginDate;
+
+    @OneToMany
+    @JoinColumn(name = "board_no")
+    private List<Comment> comments;
+
 }
